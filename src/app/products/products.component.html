@@ -1,0 +1,78 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header" style="text-align: center;" >Products_list</div>
+        <!-- 1er méthode :Reactiv forms 
+        <form [formGroup]="searchProduct">
+          <div class="input-group">
+            <span class="input-group-text">keyword</span>
+            <input type="text" class="form-control" name="keyword" formControlName="keyword" >
+            <button type="button" class="btn btn-primary" (click)="search()"><i class="bi bi-search"></i></button>
+          </div>
+                 
+        </form>-->
+         <!-- 2éme méthode  -->
+
+        <form (ngSubmit)="searchPrdct()" > 
+          <div class="input-group">
+            <span class="input-group-text">keyword</span>
+            <input type="text" class="form-control" name="keyword" [(ngModel)]="Data.keyword" >
+            <button type="submit" class="btn btn-primary" ><i class="bi bi-search"></i></button>
+            <button type="button" class="btn btn-success" routerLink="/new-product">Add Product</button>
+          </div>
+             
+        </form>
+        <!-- 3éme méthode 
+        <form #f (ngSubmit)="prodctSearch(f.value.keyword)">
+          <div class="input-group">
+            <span class="input-group-text">keyword</span>
+            <input type="text" class="form-control" name="keyword" [(ngModel)]="Data.keyword" >
+            <button type="submit" class="btn btn-primary" ><i class="bi bi-search"></i></button>
+          </div>
+             
+        </form>-->
+        
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Ref</th>
+                    <th>Promotion</th>
+                    <th>Select_Promotion</th>
+                    <th>Delet</th>
+                    <th>Update</th>
+                                     
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let p of productData  ">
+                    <td style="color: rgb(34, 32, 32);" >{{p.id}}</td>
+                    <td style="color: rgb(20, 19, 19);" >{{p.name}}</td>
+                    <td style="color: rgb(17, 15, 15);">{{p.price}}</td>
+                    <td style="color: rgb(14, 12, 12);">{{p.ref}}</td>
+                    <td   style="color: rgb(18, 189, 137);"><i *ngIf="p.promotion==true" class="bi bi-gift-fill "></i></td>
+                    <td>
+                      <button type="button" (click)="setPromo(p)" >
+                        <span class="btn btn-outline-success" *ngIf="p.promotion==false" >Promo ON</span>
+                        <span class="btn btn-outline-danger" *ngIf="p.promotion==true">Promo OFF</span>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-danger" (click)="DELET(p)"><i class="bi bi-trash-fill"></i></button>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-success" (click)="gotoEditProduct(p)"><i class="bi bi-pen-fill"></i></button>
+                    </td>
+                    
+                    
+                   </tr>
+                           
+                  
+                </tbody>
+              </table>
+
+        </div>
+    </div>
+</div>

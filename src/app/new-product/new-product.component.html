@@ -1,0 +1,33 @@
+<div class="container " style="width: 500px;" >
+    <div class="card">
+        <div class="card-header" style="text-align: center;">Add Product</div>
+        <div class="card-body">
+            <form [formGroup]="newProductFrg">
+                <div class="mb-3 mt-3">
+                  <label for="email" class="form-label">Id:</label>
+                  <input type="text" class="form-control" id="email" name="id" formControlName="id">
+                </div>
+                <div class="mb-3">
+                  <label for="pwd" class="form-label">Name:</label>
+                  <input type="text" class="form-control" id="pwd"  name="name" formControlName="name">
+                </div>
+                <div class="mb-3">
+                    <label for="pwd" class="form-label">Price:</label>
+                    <input type="text" class="form-control" id="pwd"  name="price" formControlName="price">
+                  </div>
+                  <div class="mb-3">
+                    <label for="pwd" class="form-label">Ref:</label>
+                    <input type="text" class="form-control" id="pwd"  name="ref" formControlName="ref">
+                  </div>
+                <div class="form-check mb-3">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox" name="promotion" formControlName="promotion"> Promotion
+                  </label>
+                </div>
+                <button [disabled]="!newProductFrg.valid" type="button" class="btn btn-danger" (click)="AddProduct()">Submit</button>
+              </form>
+        </div>
+
+    </div>
+
+</div>
